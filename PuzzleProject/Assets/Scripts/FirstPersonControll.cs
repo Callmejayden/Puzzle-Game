@@ -37,6 +37,10 @@ public class FirstPersonControll : MonoBehaviour
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private KeyCode crouchKey = KeyCode.LeftControl;
 
+    [Header("Camera")]
+    [SerializeField] private int playerFOV = 100;
+
+
     // Speed and gravity
     [Header("Movement Parameters")]
     [SerializeField] private float walkSpeed = 3.0f;
@@ -60,6 +64,16 @@ public class FirstPersonControll : MonoBehaviour
     [SerializeField] private float timeToCrouch = 0.25f;
     [SerializeField] private Vector3 crouchingCenter = new Vector3(0,0.5f,0);
     [SerializeField] private Vector3 standingCenter = new Vector3(0, 0, 0);
+
+    [Header("Boost Pads")]
+
+    [SerializeField] private float speedBoost;
+    [SerializeField] private float speedFOV;
+    [SerializeField] private float jumpBoost;
+
+
+
+
     private bool isCrouching;
     private bool duringCrouchAnimation;
 
@@ -99,6 +113,7 @@ public class FirstPersonControll : MonoBehaviour
 
     public static FirstPersonControll instance;
 
+    public bool speedBoosted = false;
     //Methods
 
     //Check if is looking
@@ -224,6 +239,10 @@ public class FirstPersonControll : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
+    IEnumerator Timer(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+    }
     private IEnumerator CrouchStand()
     {
         if (isCrouching && Physics.Raycast(playerCamera.transform.position, Vector3.up, 1f))
@@ -252,4 +271,36 @@ public class FirstPersonControll : MonoBehaviour
 
         duringCrouchAnimation = false;
     }
+
+    //Tracks what the player is in contact with
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        switch (hit.gameObject.tag)
+
+        {
+            case "SpeedBoost":
+                if (this.speedBoosted == false)
+                {
+                    walkSpeed = walkSpeed * speedBoost;
+                    sprintSpeed = sprintSpeed * speedBoost;
+                    playerCamera.fieldOfView = speedFOV;
+                    this.speedBoosted = true;
+                }
+                Timer(3); //Waits for 3 seconds
+                walkSpeed = walkSpeed / speedBoost;
+                sprintSpeed = sprintSpeed / speedBoost;
+                playerCamera.fieldOfView = playerFOV;
+                speedBoosted = false;
+
+                break;
+            case "JumpBoost":
+                moveDirection.y = jumpForce * jumpBoost;
+                break;
+            case "Ground":
+                
+                break;
+        }
+    }
+
+
 }

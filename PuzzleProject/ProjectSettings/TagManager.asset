@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Portal A
   - Portal B
+  - JumpBoost
+  - SpeedBoost
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -14,8 +17,8 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - JumpBoost
+  - SpeedBoost
   - IInteract
   - 
   - 

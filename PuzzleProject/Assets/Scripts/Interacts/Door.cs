@@ -9,12 +9,12 @@ public class Door : IInteract
     [SerializeField] private bool canBeInteractedWith = true;
     private Animator anim;
     [SerializeField] private bool isLocked = true;
+
     public bool IsLocked
     {
         get { return this.isLocked; }
         set { this.isLocked = value; }
     }
-
 
     private void Start()
     {
@@ -76,6 +76,5 @@ public class Door : IInteract
     public override void OnLoseFocus()
     {
     }
-
 
 }

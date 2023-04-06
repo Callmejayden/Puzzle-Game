@@ -22,33 +22,22 @@ public class Switch : IInteract
     [SerializeField] private Door myDoor;
     [SerializeField] private float cycleLength;
 
-    private Vector3 onState;
-    private Vector3 offState;
+    [SerializeField] private Vector3 onState;
+    [SerializeField] private Vector3 offState;
 
     private void Start()
     {
         audioSource = this.GetComponent<AudioSource>();
+        
         if (defaultOn)
         {
             IsOn = true;
-            //onState = current value
-            onState = GameObject.Find("Switch").transform.position;
-           
-            //offState = current value down 2
-            offState = onState;
-            offState.y -= .4f;
+
         }
         else
         {
             IsOn = false;
-            //offState = current value
-            offState = GameObject.Find("Switch").transform.position;
-
-            //onState = current value up 2
-            onState = offState;
-            onState.y += .4f;
         }
-
     }
 
     public void Toggle(Door door)
@@ -56,19 +45,20 @@ public class Switch : IInteract
         //Change Status
         isOn = !isOn;
 
-        //If lever is getting turned on
-        //On:  1, 2, 0.5
-        //Off:  1, 0, 0.5
-        //(Want to have lever automatically go up and down 2 y)
+        //if lever is getting turned on
         if (isOn == true)
         {
             
-            transform.DOMove(onState,cycleLength);
+            Vector3 NewPosition = this.transform.position;
+            NewPosition.y += -0.2f;
+            transform.DOMove(NewPosition,cycleLength);
         }
         //if lever is getting turned off
         else
         {
-            transform.DOMove(offState, cycleLength);
+            Vector3 NewPosition = this.transform.position;
+            NewPosition.y += 0.2f;
+            transform.DOMove(NewPosition, cycleLength);
 
         }
 
@@ -89,14 +79,11 @@ public class Switch : IInteract
         {
             print("Change to on color");
             GetComponent<MeshRenderer>().material = onMaterial;
-
-
         }
         else
         {
             print("Change to off color");
             GetComponent<MeshRenderer>().material = offMaterial;
-
         }
     }
 
