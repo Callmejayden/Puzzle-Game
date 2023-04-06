@@ -280,11 +280,14 @@ public class FirstPersonControll : MonoBehaviour
         sprintSpeed = sprintSpeed * speedBoost;
         playerCamera.fieldOfView = speedPadFOV;
         speedBoosted = true;
-        Timer(speedTimeSec); //Waits for 3 seconds
+
+        /*
+        Timer(speedTimeSec); //Waits for x seconds
         walkSpeed = walkSpeed / speedBoost;
         sprintSpeed = sprintSpeed / speedBoost;
         playerCamera.fieldOfView = playerFOV;
         speedBoosted = false;
+        */
     }
 
     //Tracks what the player is in contact with
@@ -302,11 +305,12 @@ public class FirstPersonControll : MonoBehaviour
             case "JumpBoost":
                 moveDirection.y = jumpForce * jumpPadBoost;
                 break;
+            case "PressurePlate":
+                //GetComponent().
+                break;
             case "Ground":
                 
                 break;
         }
     }
-
-
 }

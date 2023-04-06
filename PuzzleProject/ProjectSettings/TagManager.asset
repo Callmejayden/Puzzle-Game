@@ -9,6 +9,7 @@ TagManager:
   - JumpBoost
   - SpeedBoost
   - Ground
+  - PressurePlate
   layers:
   - Default
   - TransparentFX
