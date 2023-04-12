@@ -31,12 +31,6 @@ public class FirstPersonControll : MonoBehaviour
     [SerializeField] private bool canCrouch = true;
     [SerializeField] private bool WillSlideSlopes = true;
 
-
-    [Header("Functional Options")]
-    [SerializeField] public int MaxHealth;
-    public int CurrentHealth;
-
-
     [Header("Controls")]
     [SerializeField] private KeyCode InteractKey = KeyCode.Mouse0;
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
@@ -169,7 +163,7 @@ public class FirstPersonControll : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        CurrentHealth = MaxHealth;
+
 
 
     }

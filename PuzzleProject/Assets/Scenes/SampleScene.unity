@@ -1553,6 +1553,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03ba3418b2c8bb24889c76a1650edf1f, type: 3}
+--- !u!1 &860202241 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7545274761136219322, guid: 03ba3418b2c8bb24889c76a1650edf1f, type: 3}
+  m_PrefabInstance: {fileID: 860202240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &860202242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860202241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5629a064e31293a4098c9aae531d3318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 3
+  CurrentHealth: 0
+  isDead: 1
+  anim: {fileID: 0}
 --- !u!1 &892461628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,7 +2595,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27560
+  m_Name: pb_Mesh32624
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
