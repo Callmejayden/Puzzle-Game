@@ -9,20 +9,20 @@ using UnityEngine;
 
 public class FirstPersonControll : MonoBehaviour
 {
-    
+
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public float jumpHeight = 3f;
-    
+
     Vector3 velocity;
     bool isGrounded;
 
     public bool CanMove { get; private set; } = true;
     private bool isSprinting => canSprint && Input.GetKey(sprintKey);
     private bool shouldJump => Input.GetKeyDown(jumpKey) && characterController.isGrounded;
-    private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded; 
+    private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
 
     [Header("Functional Options")]
     [SerializeField] private bool canInteract = true;
@@ -30,6 +30,12 @@ public class FirstPersonControll : MonoBehaviour
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool canCrouch = true;
     [SerializeField] private bool WillSlideSlopes = true;
+
+
+    [Header("Functional Options")]
+    [SerializeField] public int MaxHealth;
+    public int CurrentHealth;
+
 
     [Header("Controls")]
     [SerializeField] private KeyCode InteractKey = KeyCode.Mouse0;
@@ -39,7 +45,6 @@ public class FirstPersonControll : MonoBehaviour
 
     [Header("Camera")]
     [SerializeField] private int playerFOV;
-
 
     // Speed and gravity
     [Header("Movement Parameters")]
@@ -164,6 +169,7 @@ public class FirstPersonControll : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        CurrentHealth = MaxHealth;
 
 
     }
@@ -308,8 +314,7 @@ public class FirstPersonControll : MonoBehaviour
             case "PressurePlate":
                 //GetComponent().
                 break;
-            case "Ground":
-                
+            case "Ground":                
                 break;
         }
     }
