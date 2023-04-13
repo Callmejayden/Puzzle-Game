@@ -9,20 +9,20 @@ using UnityEngine;
 
 public class FirstPersonControll : MonoBehaviour
 {
-
+    
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public float jumpHeight = 3f;
-
+    
     Vector3 velocity;
     bool isGrounded;
 
     public bool CanMove { get; private set; } = true;
     private bool isSprinting => canSprint && Input.GetKey(sprintKey);
     private bool shouldJump => Input.GetKeyDown(jumpKey) && characterController.isGrounded;
-    private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
+    private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded; 
 
     [Header("Functional Options")]
     [SerializeField] private bool canInteract = true;
@@ -31,20 +31,11 @@ public class FirstPersonControll : MonoBehaviour
     [SerializeField] private bool canCrouch = true;
     [SerializeField] private bool WillSlideSlopes = true;
 
-
-    [Header("Functional Options")]
-    [SerializeField] public int MaxHealth;
-    public int CurrentHealth;
-
-
     [Header("Controls")]
     [SerializeField] private KeyCode InteractKey = KeyCode.Mouse0;
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private KeyCode crouchKey = KeyCode.LeftControl;
-
-    [Header("Camera")]
-    [SerializeField] private int playerFOV;
 
     // Speed and gravity
     [Header("Movement Parameters")]
@@ -69,17 +60,6 @@ public class FirstPersonControll : MonoBehaviour
     [SerializeField] private float timeToCrouch = 0.25f;
     [SerializeField] private Vector3 crouchingCenter = new Vector3(0,0.5f,0);
     [SerializeField] private Vector3 standingCenter = new Vector3(0, 0, 0);
-
-    [Header("Boost Pads")]
-
-    [SerializeField] private float speedPadBoost;
-    [SerializeField] private float speedPadTime;
-    [SerializeField] private float speedPadFOV;
-    [SerializeField] private float jumpPadBoost;
-
-
-
-
     private bool isCrouching;
     private bool duringCrouchAnimation;
 
@@ -119,7 +99,6 @@ public class FirstPersonControll : MonoBehaviour
 
     public static FirstPersonControll instance;
 
-    public bool speedBoosted = false;
     //Methods
 
     //Check if is looking
@@ -169,7 +148,6 @@ public class FirstPersonControll : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        CurrentHealth = MaxHealth;
 
 
     }
@@ -246,10 +224,6 @@ public class FirstPersonControll : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
-    IEnumerator Timer(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-    }
     private IEnumerator CrouchStand()
     {
         if (isCrouching && Physics.Raycast(playerCamera.transform.position, Vector3.up, 1f))
@@ -277,45 +251,5 @@ public class FirstPersonControll : MonoBehaviour
         isCrouching = !isCrouching;
 
         duringCrouchAnimation = false;
-    }
-
-    private void SpeedBoost(float speedBoost, float speedTimeSec)
-    {
-
-        walkSpeed = walkSpeed * speedBoost;
-        sprintSpeed = sprintSpeed * speedBoost;
-        playerCamera.fieldOfView = speedPadFOV;
-        speedBoosted = true;
-
-        /*
-        Timer(speedTimeSec); //Waits for x seconds
-        walkSpeed = walkSpeed / speedBoost;
-        sprintSpeed = sprintSpeed / speedBoost;
-        playerCamera.fieldOfView = playerFOV;
-        speedBoosted = false;
-        */
-    }
-
-    //Tracks what the player is in contact with
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        switch (hit.gameObject.tag)
-
-        {
-            case "SpeedBoost":
-                if (this.speedBoosted == false)
-                {
-                    SpeedBoost(speedPadBoost, speedPadTime);
-                }
-                break;
-            case "JumpBoost":
-                moveDirection.y = jumpForce * jumpPadBoost;
-                break;
-            case "PressurePlate":
-                //GetComponent().
-                break;
-            case "Ground":                
-                break;
-        }
     }
 }
