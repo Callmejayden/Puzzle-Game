@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class IDamage : MonoBehaviour
+public abstract class Damage : MonoBehaviour
 {
     //Changes every IDamage to layer 9
     public virtual void Awake()
     {
-        gameObject.tag = "IDamage";
+        gameObject.tag = "Damage";
     }
 
 

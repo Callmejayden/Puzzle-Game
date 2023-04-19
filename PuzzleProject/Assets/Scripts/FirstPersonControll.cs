@@ -100,7 +100,7 @@ public class FirstPersonControll : MonoBehaviour
     [SerializeField] private Vector3 interactionRayPoint = default;
     [SerializeField] private float interactionDistance = default;
     [SerializeField] private LayerMask interactionLayer = default;
-    private IInteract currentInteractable;
+    private Interact currentInteractable;
 
     // variables
     private Camera playerCamera;
@@ -124,7 +124,7 @@ public class FirstPersonControll : MonoBehaviour
             //if on layer 9                      AND dont have current interactable OR if the object I am looking at is not equal to the current interactable
             if (hit.collider.gameObject.layer == 9 && (currentInteractable == null || hit.collider.gameObject.GetInstanceID() != currentInteractable.GetInstanceID()))
             {
-                hit.collider.TryGetComponent<IInteract>(out currentInteractable);
+                hit.collider.TryGetComponent<Interact>(out currentInteractable);
 
                 if (currentInteractable)
                     currentInteractable.OnFocus();
@@ -144,14 +144,10 @@ public class FirstPersonControll : MonoBehaviour
     //When Pressing Interact Button
     private void HandleInteractionInput()
     {
-        // if interact key is pressed AND there is something to interact with AND Create Ray at center of screen with interaction distance AND is on the interact Layer
+        // if interact key is pressed AND there is something to interact with AND Create Ray at center of screen with interaction distance results in a hit AND is on the interact Layer
         if (Input.GetKeyDown(InteractKey) && currentInteractable != null && Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance, interactionLayer))
         {
             currentInteractable.OnInteract();
-
-
-
-
         }
 
     }
