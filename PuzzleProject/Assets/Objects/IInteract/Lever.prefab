@@ -910,7 +910,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: abd722cd14cad5646be9b94ec0d4c987, type: 2}
+  - {fileID: 2100000, guid: 7c25466b19d2301489cabedd3c2e4935, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1250,7 +1250,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 97ec66cbb43ad784aad94738bf5c4250, type: 2}
+  - {fileID: 2100000, guid: 1a1eb9541ed51a644a36fed9d86edb65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1303,16 +1303,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8771527483172517829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8bb842a4a90233428215c089953c533, type: 3}
+  m_Script: {fileID: 11500000, guid: 92df5c5ea3439904786fc8e176a595d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultOn: 0
   isOn: 0
-  onMaterial: {fileID: 2100000, guid: 475678be818bf344f8d39ec5049cac06, type: 2}
-  offMaterial: {fileID: 2100000, guid: 97ec66cbb43ad784aad94738bf5c4250, type: 2}
+  onMaterial: {fileID: 2100000, guid: d5dc9e30adc827e48a082d6288f48423, type: 2}
+  offMaterial: {fileID: 2100000, guid: 1a1eb9541ed51a644a36fed9d86edb65, type: 2}
   audioSource: {fileID: 0}
-  myDoor: {fileID: 0}
-  cycleLength: 1
 --- !u!82 &8771527483172517837
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1323,7 +1320,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: af82da9cdfa0fc7469bcf2ae43c03ba5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a61d0c90c4e452d4ba7da39f6eb93dfa, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

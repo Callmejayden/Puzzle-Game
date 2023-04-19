@@ -7,6 +7,8 @@ public class Switch : Trigger
     [SerializeField] private Material onMaterial;
     [SerializeField] private Material offMaterial;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private IDo Doer;
+
 
     private void Start()
     {

@@ -11,7 +11,6 @@ public class Button : MonoBehaviour
     [SerializeField] private Material onMaterial;
     [SerializeField] private Material offMaterial;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private Door myDoor;
     [SerializeField] private Material myMaterial;
     private void Start()
     {
@@ -20,7 +19,7 @@ public class Button : MonoBehaviour
         myMaterial = this.GetComponent<Material>();
     }
 
-    public void Toggle(Door door)
+    public void Toggle()
     {
         //Change Status
         isOn = !isOn;
@@ -31,9 +30,6 @@ public class Button : MonoBehaviour
 
         //audioSource.Play();
 
-        //If lever is on, door is unlocked 
-        door.ToggleLock();
-        print("myDoor isLocked = " + myDoor.IsLocked);
     }
 
     private void ToggleColor(bool isOn)
