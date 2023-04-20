@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7613469061423333018}
   - component: {fileID: 7613469061423333019}
   - component: {fileID: 7613469061423333016}
-  - component: {fileID: 7613469061423333017}
-  - component: {fileID: 7613469061423333021}
+  - component: {fileID: 8153245391324194503}
+  - component: {fileID: 4456478220260495157}
   m_Layer: 0
   m_Name: MovingCubeObj
   m_TagString: Untagged
@@ -99,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7613469061423333017
+--- !u!114 &8153245391324194503
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,14 +108,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7613469061423333015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b839093bfa98d50409c5eb53336ff1af, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c4a260c7b5d1404ebcb9b841594c8bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 7613469062151160398}
-  - {fileID: 7613469061984362863}
+  waypoints: []
   speed: 1
---- !u!114 &7613469061423333021
+--- !u!114 &4456478220260495157
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,9 +122,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7613469061423333015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 286113acf48323d40b43259e1a9d8d63, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c4a260c7b5d1404ebcb9b841594c8bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
+  speed: 1
 --- !u!1 &7613469061984362863
 GameObject:
   m_ObjectHideFlags: 0
